@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class roadMove : MonoBehaviour
 {
-    [SerializeField] private GameObject mainPlayer;
     [SerializeField] private GameObject startWayPart;
     [SerializeField] private GameObject[] wayParts;
-    [SerializeField] private float roudVelocity;
+    [SerializeField] private float roadVelocity;
 
     private GameObject nextWayPart1;
     private GameObject nextWayPart2;
     private GameObject nextWayPart3;
+
     private GameObject newWayPart;
 
 
     private void Awake()
     {
-        mainPlayer = Instantiate(mainPlayer, new Vector3(0,1,0), Quaternion.identity);
-
         startWayPart = Instantiate(startWayPart, new Vector3(0,0,0), Quaternion.identity);
         startWayPart.tag = "wayPart";
 
@@ -35,15 +33,26 @@ public class roadMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        RoadsMove();
+        DestroyUnused_CreateNew(GameObject.FindGameObjectWithTag("wayPart"));
+    }
+
+
+
+    private void RoadsMove()
+    {
         foreach (GameObject roadPart in GameObject.FindGameObjectsWithTag("wayPart"))
         {
-            roadPart.transform.position -= new Vector3(0,0,roudVelocity);
+            roadPart.transform.position -= new Vector3(0,0,roadVelocity);
         }
+    }
 
-        GameObject targetWayPart = GameObject.FindGameObjectWithTag("wayPart");
-        if (targetWayPart.transform.position.z <= -20) 
+    private void DestroyUnused_CreateNew(GameObject unsedPart)
+    {
+        if (unsedPart.transform.position.z <= -20)
         {
-            Destroy(targetWayPart);
+            Destroy(unsedPart);
+    
             int rand = Random.Range(0, wayParts.Length);
             newWayPart = Instantiate(wayParts[rand], new Vector3(0,0,140), Quaternion.identity);
             newWayPart.tag = "wayPart";
