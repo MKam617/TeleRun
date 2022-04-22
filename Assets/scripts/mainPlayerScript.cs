@@ -7,7 +7,11 @@ public class mainPlayerScript : MonoBehaviour
 {   
     public GameObject MainPlayer;  
 
-    CharacterController CharacterController;
+    [SerializeField] private float controllSpeed;
+    [SerializeField] private float jumpSpeed;
+
+    private CharacterController CharacterController;
+    private Vector3 dir;
 
     // [SerializeField, Range(5,20)] private int deadZone;
     //private Touch theTouch;
@@ -19,8 +23,19 @@ public class mainPlayerScript : MonoBehaviour
     }
 
     private void Update()
-    {
-        CharacterController.SimpleMove(Vector3.zero);
+    {        
+        if (CharacterController.isGrounded)
+        {
+            dir = new Vector3(Input.GetAxis("Horizontal") * controllSpeed,0,0);
+            if (Input.GetKey(KeyCode.Space))
+            {
+                dir.y += jumpSpeed;
+            }
+        } else{
+            dir += Physics.gravity * Time.deltaTime;
+        }
+        
+        CharacterController.Move(dir * Time.deltaTime);
     }
 
     // private void SwipeControl(Touch touch)

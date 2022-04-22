@@ -310,7 +310,6 @@ GameObject:
   - component: {fileID: 1944395350}
   - component: {fileID: 1944395349}
   - component: {fileID: 1944395351}
-  - component: {fileID: 1944395352}
   m_Layer: 0
   m_Name: gameController
   m_TagString: Untagged
@@ -325,12 +324,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944395348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbda73810605a884da405e43bb808de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 963194227}
+  MainPlayer: {fileID: 809785596596929971, guid: 079b2caeeed910f41b473ee9ec730d7e, type: 3}
   startWayPart: {fileID: 8590181666002501796, guid: 65a095c4be51b0141a130eef93e2069b, type: 3}
   wayParts:
   - {fileID: 4871831756516685001, guid: 53c852ebb252a2c4aae59485a8229b61, type: 3}
@@ -360,21 +360,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944395348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2427d20f40a801418e21187f9adbcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MainPlayer: {fileID: 809785596596929971, guid: 079b2caeeed910f41b473ee9ec730d7e, type: 3}
---- !u!114 &1944395352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1944395348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd56cd4fb1df920459613b02a0bc8e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
