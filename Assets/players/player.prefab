@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4560732651504980879}
   - component: {fileID: 2654815297825823622}
   - component: {fileID: 8925387102328523288}
-  - component: {fileID: 9154690573231745182}
+  - component: {fileID: -235612980096140818}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &9154690573231745182
-CapsuleCollider:
+--- !u!143 &-235612980096140818
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,9 +95,13 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  serializedVersion: 2
   m_Height: 2
-  m_Direction: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 1
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1087061283207817802
 GameObject:
