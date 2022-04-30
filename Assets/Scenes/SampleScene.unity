@@ -366,3 +366,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainPlayer: {fileID: 809785596596929971, guid: 079b2caeeed910f41b473ee9ec730d7e, type: 3}
+  controllSpeed: 3
+  jumpSpeed: 4

@@ -25,6 +25,7 @@ public class roadMove : MonoBehaviour
     private float cameraView;
     private float creationPos;
 
+    private Transform lookAtPoint;
 
     private void Awake()
     {
@@ -42,15 +43,19 @@ public class roadMove : MonoBehaviour
 
         notViewPiece = (Mathf.Tan((MainCamera.fieldOfView/2 + MainCamera.transform.eulerAngles.x) * Mathf.PI/180)) * MainCamera.transform.position.y;
         cameraView = startWayPart.transform.localScale.z - notViewPiece;
+
+        lookAtPoint = MainPlayer.transform.Find("lookAtPoint");
     }
 
     private void Update()
     {
+        MainCamera.transform.LookAt(MainPlayer.transform.Find("lookAtPoint"));
+
         MainPlayer = GameObject.FindGameObjectWithTag("Player");
         partsInScene = GameObject.FindGameObjectsWithTag("wayPart");
         partScale = partsInScene[0].transform.localScale.z;       
-        endPos = partsInScene[0].transform.Find("end").transform.position.z;
         startPos = partsInScene[0].transform.Find("start").transform.position.z;
+        endPos = partsInScene[0].transform.Find("end").transform.position.z;
 
         MainCamera.transform.position = new Vector3(0,3, MainPlayer.transform.position.z - 3.2f);
 
