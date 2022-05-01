@@ -93,7 +93,7 @@ public class roadMove : MonoBehaviour
 
     private void CreateNewPart(GameObject[] roadPartsInScene, string where, float scale)
     {
-        newWayPart = wayParts[Random.Range(1, wayParts.Length)];
+        newWayPart = wayParts[Random.Range(0, wayParts.Length)];
         
         startPos = roadPartsInScene[0].transform.Find("start").position.z;
         endPos = roadPartsInScene[partsInScene.Length - 1].transform.Find("end").position.z;

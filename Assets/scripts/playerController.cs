@@ -6,43 +6,48 @@ public class playerController : MonoBehaviour
 {   
     public GameObject MainPlayer; 
 
+    private CharacterController CharacterController;
     [SerializeField] private float controllSpeed;
     [SerializeField] private float jumpSpeed;
-
-    private CharacterController CharacterController;
     private Vector3 dir;
 
-    // [SerializeField, Range(5,20)] private int deadZone;
-    //private Touch theTouch;
+    [SerializeField, Range(5,20)] private int deadZone;
+    private Touch theTouch;
 
     private void Awake()
     {
         MainPlayer = Instantiate(MainPlayer, new Vector3(0,1,3.2f), Quaternion.identity);
-        CharacterController = MainPlayer.GetComponent<CharacterController>();
-        
+        CharacterController = MainPlayer.GetComponent<CharacterController>();   
     }
 
     private void Update()
     {        
-        PCcontrol();
-        
+        //PCcontrol();
+
+        SwipeControl();
+
         CharacterController.Move(dir * Time.deltaTime);
     }
 
-    // private void SwipeControl(Touch touch)
-    // {
-    //     if (touch.phase == TouchPhase.Ended)
-    //     {
-    //         if (touch.deltaPosition.x > deadZone)
-    //         {
-    //             print("RIGHT");
-    //         }
-    //         if (touch.deltaPosition.x < -deadZone)
-    //         {
-    //             print("LEFT");
-    //         }
-    //     }
-    // }
+    private Vector3 SwipeControl()
+    {
+        if (CharacterController.isGrounded)
+        {
+            if (Input.touchCount > 0)
+            {
+                theTouch = Input.GetTouch(0);
+                if (theTouch.deltaPosition.y > deadZone) dir.y += jumpSpeed;
+                if (theTouch.position.x > 120 + deadZone) dir += new Vector3(controllSpeed * Time.deltaTime,0,0);
+                if (theTouch.position.x < 80 - deadZone) dir += new Vector3(-controllSpeed * Time.deltaTime,0,0);                
+            } else {
+                dir = Vector3.zero;
+            }
+        } else {
+            dir += Physics.gravity * Time.deltaTime;
+        }
+
+        return dir;
+    }
 
     private Vector3 PCcontrol()
     {
@@ -56,7 +61,6 @@ public class playerController : MonoBehaviour
         } else{
             dir += Physics.gravity * Time.deltaTime;
         }
-
         return dir;
     }
 }

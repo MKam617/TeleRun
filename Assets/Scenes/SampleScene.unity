@@ -362,9 +362,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1944395348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2427d20f40a801418e21187f9adbcd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 6649b7f84c0d0ad4a907104ccf5a0bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MainPlayer: {fileID: 809785596596929971, guid: 079b2caeeed910f41b473ee9ec730d7e, type: 3}
   controllSpeed: 3
   jumpSpeed: 4
+  deadZone: 11
