@@ -24,16 +24,7 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {        
-        if (CharacterController.isGrounded)
-        {
-            dir = new Vector3(Input.GetAxis("Horizontal") * controllSpeed,0,0);
-            if (Input.GetKey(KeyCode.Space))
-            {
-                dir.y += jumpSpeed;
-            }
-        } else{
-            dir += Physics.gravity * Time.deltaTime;
-        }
+        PCcontrol();
         
         CharacterController.Move(dir * Time.deltaTime);
     }
@@ -52,4 +43,20 @@ public class playerController : MonoBehaviour
     //         }
     //     }
     // }
+
+    private Vector3 PCcontrol()
+    {
+        if (CharacterController.isGrounded)
+        {
+            dir = new Vector3(Input.GetAxis("Horizontal") * controllSpeed,0,0);
+            if (Input.GetKey(KeyCode.Space))
+            {
+                dir.y += jumpSpeed;
+            }
+        } else{
+            dir += Physics.gravity * Time.deltaTime;
+        }
+
+        return dir;
+    }
 }
