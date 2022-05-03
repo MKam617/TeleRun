@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class mainPlayerScript : MonoBehaviour
 {   
-    //public GameObject[] MainPlayers;
-
+    
 }
 

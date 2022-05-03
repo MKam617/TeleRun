@@ -74,7 +74,7 @@ public class roadMove : MonoBehaviour
     {
         foreach (GameObject roadPart in roadPartsInScene)
         {
-            roadPart.transform.position -= new Vector3(0,0,roadVelocity);
+            roadPart.transform.position -= new Vector3(0,0,roadVelocity * Time.deltaTime);
         }
     }
 

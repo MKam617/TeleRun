@@ -6,9 +6,9 @@ public class playerController : MonoBehaviour
 {   
     public GameObject MainPlayer; 
 
-    private CharacterController CharacterController;
     [SerializeField] private float controllSpeed;
     [SerializeField] private float jumpSpeed;
+    private CharacterController CharacterController;
     private Vector3 dir;
 
     [SerializeField, Range(5,20)] private int deadZone;
@@ -22,9 +22,9 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {        
-        //PCcontrol();
+        PCcontrol();
 
-        SwipeControl();
+        //SwipeControl();
 
         CharacterController.Move(dir * Time.deltaTime);
     }
@@ -45,7 +45,6 @@ public class playerController : MonoBehaviour
         } else {
             dir += Physics.gravity * Time.deltaTime;
         }
-
         return dir;
     }
 
