@@ -10,6 +10,7 @@ public class roadMove : MonoBehaviour
     [SerializeField] private GameObject startWayPart;
     [SerializeField] private GameObject[] wayParts;
     [SerializeField] private float roadVelocity;
+    [SerializeField] private float acceleration;
 
     private GameObject nextWayPart1;
     private GameObject nextWayPart2;
@@ -21,8 +22,6 @@ public class roadMove : MonoBehaviour
     private float startPos;
     private float endPos;
     private float partScale;
-    private float notViewPiece;
-    private float cameraView;
     private float creationPos;
 
     private Transform lookAtPoint;
@@ -41,8 +40,6 @@ public class roadMove : MonoBehaviour
         nextWayPart3 = Instantiate(wayParts[rand3], new Vector3(0,0,startWayPart.transform.localScale.z*3), Quaternion.identity);
         nextWayPart3.tag = "wayPart";    
 
-        notViewPiece = (Mathf.Tan((MainCamera.fieldOfView/2 + MainCamera.transform.eulerAngles.x) * Mathf.PI/180)) * MainCamera.transform.position.y;
-        cameraView = startWayPart.transform.localScale.z - notViewPiece;
 
         lookAtPoint = MainPlayer.transform.Find("lookAtPoint");
     }
@@ -57,9 +54,9 @@ public class roadMove : MonoBehaviour
         startPos = partsInScene[0].transform.Find("start").transform.position.z;
         endPos = partsInScene[0].transform.Find("end").transform.position.z;
 
-        MainCamera.transform.position = new Vector3(0,3, MainPlayer.transform.position.z - 3.2f);
+        MainCamera.transform.position = new Vector3(0,3, MainPlayer.transform.position.z - 5f);
 
-        if (MainPlayer.transform.position.z > endPos)
+        if (MainPlayer.transform.position.z > endPos + 5) // responsible for the place where new part appiere
         {
             DestroyUnused(partsInScene, "start");
             CreateNewPart(partsInScene, "end", partScale);
@@ -75,8 +72,9 @@ public class roadMove : MonoBehaviour
         foreach (GameObject roadPart in roadPartsInScene)
         {
             roadPart.transform.position -= new Vector3(0,0,roadVelocity * Time.deltaTime);
+            roadVelocity += acceleration;
         }
-    }
+    } 
 
 
     private void DestroyUnused(GameObject[] roadPartsInScene, string where)

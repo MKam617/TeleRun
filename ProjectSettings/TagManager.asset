@@ -7,6 +7,7 @@ TagManager:
   - wayPart
   - resume
   - canvas
+  - enemy
   layers:
   - Default
   - TransparentFX

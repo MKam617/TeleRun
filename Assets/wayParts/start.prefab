@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 7572872889454302297}
   - component: {fileID: 1683856946141727741}
   m_Layer: 0
-  m_Name: wayPartType0
+  m_Name: start
   m_TagString: wayPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

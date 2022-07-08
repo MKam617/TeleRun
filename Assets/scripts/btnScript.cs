@@ -5,16 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class btnScript : MonoBehaviour
 {
-    public GameObject pauseBtn;
-    public GameObject resumeBtn; // must be of at the start
-    public GameObject pauseMenu; // must be of at the start
-    public GameObject quitBtn; // must be of at the start
+    public GameObject pauseBtn; // off at start
+    public GameObject resumeBtn; // off at start
+    public GameObject fade; // off at start
+    public GameObject quitBtn; // off at start
 
 
     public void StartTheGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
+        pauseBtn.SetActive(true);
     }
 
     public void Pause()
@@ -23,7 +24,7 @@ public class btnScript : MonoBehaviour
         Time.timeScale = 0;
 
         resumeBtn.SetActive(true);
-        pauseMenu.SetActive(true);
+        fade.SetActive(true);
         quitBtn.SetActive(true);
     }
     public void Resume()
@@ -32,11 +33,11 @@ public class btnScript : MonoBehaviour
         Time.timeScale = 1;
         
         pauseBtn.SetActive(true);
-        pauseMenu.SetActive(false);
+        fade.SetActive(false);
         quitBtn.SetActive(false);
     }
     public void Quit()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
